@@ -1,0 +1,49 @@
+#!/usr/bin/env php
+<?php
+    /**
+     * Imports GeoNames geogprahical database into SQL
+     * Must be of the same format as those available at
+     * http://download.geonames.org/export/zip/
+     * It will import into `places` table in `pset8` database
+     *
+     * Usage: ./import <file>
+     *
+     * @author: Billy.Ljm
+     * @date: 18 July 2015
+     */
+
+    require("../includes/functions.php");
+
+    # validate argument
+    if (!isset($argv[1]))
+    {
+        exit("Usage: ./import <file>\n");
+    }
+    else if (!file_exists($argv[1]))
+    {
+        exit($argv[1] . " does not exist\n");
+    }
+    else if (!is_readable($argv[1]))
+    {
+        exit("You do not have permission to read " . $argv[1] . "\n");
+    }
+
+    # open file
+    $file = fopen($argv[1], "r");
+    if($file == FALSE)
+    {
+        exit("There was an error opening " . $argv[1] . "\n");
+    }
+
+    # import information
+    $info = fgetcsv($file, 200, "\t");
+    while ($info != FALSE)
+    {
+        array_unshift($info, "INSERT INTO places VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        call_user_func_array("query", $info);
+        $info = fgetcsv($file, 200, "\t");
+    }
+
+    # end
+    fclose($file);
+?>
