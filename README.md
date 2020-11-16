@@ -7,7 +7,11 @@ No matter, I'll also be doing the harder "hacker editions" of the problem sets t
 ## MOOC Details
 __Site:__ [edX](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x)  
 __Date:__ 2015  
-__School__ Harvard University  
+__School:__ Harvard University  
+
+## Certificate
+<a href="https://verify.edx.org/cert/c79e6132f66644a3ae4360bbc0db5051"><img src="./CS50x_Certificate.jpg" alt="CS50x Certificate" height="300px"></a>  
+_(This was from the previous run of the MOOC, which I also attended)_  
 
 ## Description
 Each file contains a week's problem sets & are separated into normal `pset` and harder `hacker`.   
